@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/10/14 22:35:11 by elima-me         ###   ########.fr       */
+/*   Created: 2021/06/05 13:58:29 by elima-me          #+#    #+#             */
+/*   Updated: 2021/06/07 14:49:27 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include "libft.h"
-
-typedef struct s_stack
+int	ft_lstsize(t_list *lst)
 {
-	int				num;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}				t_stack;
+	int	elements;
 
-typedef struct s_swap
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		size_a;
-	int		size_b;
-}				t_swap;
-
-#endif
+	elements = 0;
+	while (lst != NULL)
+	{
+		elements++;
+		lst = lst->next;
+	}
+	return (elements);
+}

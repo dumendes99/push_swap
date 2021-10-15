@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/10/14 22:35:11 by elima-me         ###   ########.fr       */
+/*   Created: 2021/05/14 20:20:27 by eduardo           #+#    #+#             */
+/*   Updated: 2021/08/12 17:21:13 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include "libft.h"
-
-typedef struct s_stack
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int				num;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}				t_stack;
+	unsigned char		*str;
+	unsigned char		cc;
+	size_t				i;
 
-typedef struct s_swap
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		size_a;
-	int		size_b;
-}				t_swap;
-
-#endif
+	str = s;
+	cc = c;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = cc;
+		i++;
+	}
+	return (s);
+}

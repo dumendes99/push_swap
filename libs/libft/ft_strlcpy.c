@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/10/14 22:35:11 by elima-me         ###   ########.fr       */
+/*   Created: 2021/05/18 22:20:21 by elima-me          #+#    #+#             */
+/*   Updated: 2021/06/03 14:44:38 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include "libft.h"
-
-typedef struct s_stack
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 {
-	int				num;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}				t_stack;
+	size_t	i;
+	size_t	len_src;
 
-typedef struct s_swap
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		size_a;
-	int		size_b;
-}				t_swap;
-
-#endif
+	if (dst == NULL || src == NULL)
+		return (0);
+	len_src = ft_strlen(src);
+	i = 0;
+	if (n > 0)
+	{
+		while ((src[i] != '\0') && (i < (n - 1)))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+		return (len_src);
+	}
+	if (n == 0)
+		dst[ft_strlen(dst)] = '\0';
+	return (len_src);
+}

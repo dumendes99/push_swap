@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/10/14 22:35:11 by elima-me         ###   ########.fr       */
+/*   Created: 2021/06/05 17:50:03 by elima-me          #+#    #+#             */
+/*   Updated: 2021/06/07 14:55:37 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include "libft.h"
-
-typedef struct s_stack
+t_list	*ft_lstlast(t_list *lst)
 {
-	int				num;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}				t_stack;
-
-typedef struct s_swap
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		size_a;
-	int		size_b;
-}				t_swap;
-
-#endif
+	while (lst != NULL)
+	{
+		if (lst->next == NULL)
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
+}

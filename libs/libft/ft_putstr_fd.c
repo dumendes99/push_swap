@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/10/14 22:35:11 by elima-me         ###   ########.fr       */
+/*   Created: 2021/05/26 17:24:11 by elima-me          #+#    #+#             */
+/*   Updated: 2021/06/01 18:28:34 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include "libft.h"
-
-typedef struct s_stack
+void	ft_putstr_fd(char *s, int fd)
 {
-	int				num;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}				t_stack;
-
-typedef struct s_swap
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		size_a;
-	int		size_b;
-}				t_swap;
-
-#endif
+	if (s == NULL)
+		return ;
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
+}
