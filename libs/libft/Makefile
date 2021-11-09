@@ -35,9 +35,8 @@ SRC =	ft_atoi.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c 
-
-BONUS = ft_lstadd_back.c \
+		ft_toupper.c \
+		ft_lstadd_back.c \
 		ft_lstadd_front.c \
 		ft_lstclear.c \
 		ft_lstdelone.c \
@@ -56,16 +55,6 @@ $(NAME): $(OBJ_SRC)
 
 $(OBJ_SRC): $(SRC) 
 	$(CC) $(FLAGS) -c $(SRC)
-
-bonus: $(OBJ_BONUS)
-	ar -rcs $(NAME) $(OBJ_BONUS)
-
-$(OBJ_BONUS): $(BONUS)
-	$(CC) $(FLAGS) -c $(BONUS)
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ_SRC)
 
 clean:
 	$(RM) $(OBJ_SRC) $(OBJ_BONUS)

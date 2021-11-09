@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 19:15:19 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/08 21:38:39 by elima-me         ###   ########.fr       */
+/*   Created: 2021/11/01 20:29:13 by elima-me          #+#    #+#             */
+/*   Updated: 2021/11/03 18:07:01 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	print_stack(t_stack **stack)
+void	rotate(t_stack **stack, int print)
 {
 	t_stack	*temp;
 
 	temp = *stack;
-	while (temp)
-	{
-		printf("%d\n", temp->num);
-		temp = temp->next;
-	}
+	ps_lstadd_back(stack, new_node(temp->num));
+	del_first_node(stack);
+	if (print == ra)
+		ft_putstr_fd("ra\n", 1);
+	if (print == rb)
+	ft_putstr_fd("rb\n", 1);
 }
 
-void	init_struct(t_info *info)
+void	rotate_r(t_info *info)
 {
-	ft_bzero(info, sizeof(t_info));
-}
-
-int	main(int argc, char *argv[])
-{
-	t_info	info;
-
-	init_struct(&info);
-	if (!handler_inputs(argc, argv, &info))
-		return (0);
-	print_stack(&info.stack_a);
-	printf("---------------------\n");
-	short_sort(&info);
-	print_stack(&info.stack_a);
-	freelist(info.stack_a);
-	return (1);
+	rotate(&info->stack_a, 9);
+	rotate(&info->stack_b, 9);
+	ft_putstr_fd("rr\n", 1);
 }
