@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 19:15:19 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/08 21:38:39 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:48:10 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	main(int argc, char *argv[])
 
 	init_struct(&info);
 	if (!handler_inputs(argc, argv, &info))
-		return (0);
-	print_stack(&info.stack_a);
-	printf("---------------------\n");
+		return (1);
+	normalize(&info);
+	freelist(info.temp);
 	short_sort(&info);
-	print_stack(&info.stack_a);
+	big_sort(&info);
 	freelist(info.stack_a);
-	return (1);
+	return (0);
 }

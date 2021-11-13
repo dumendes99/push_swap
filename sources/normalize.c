@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/16 16:45:49 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/13 16:53:52 by elima-me         ###   ########.fr       */
+/*   Created: 2021/11/12 12:45:26 by elima-me          #+#    #+#             */
+/*   Updated: 2021/11/13 20:00:26 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <push_swap.h>
 
-long int	ft_atoi(const char *nptr)
+void	normalize(t_info *info)
 {
-	long int	res;
-	int			sign;
+	t_stack	*helper;
+	t_stack	*aux;
+	int		new_value;
 
-	res = 0;
-	sign = 1;
-	if (*nptr == '-' || *nptr == '+')
+	helper = info->temp;
+	while (helper != NULL)
 	{
-		if (*nptr == '-')
-			sign = -1;
-		nptr++;
+		new_value = 1;
+		aux = info->temp;
+		while (aux != NULL)
+		{
+			if (helper->num > aux->num)
+				new_value++;
+			aux = aux->next;
+		}
+		ps_lstadd_back(&info->stack_a, new_node(new_value));
+		helper = helper->next;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		res = (res * 10) + (*nptr - '0');
-		nptr++;
-	}
-	res = res *sign;
-	return (res);
 }

@@ -24,6 +24,8 @@ SOURCES_FILES = main.c \
 				rotate.c \
 				reverse_rotate.c \
 				short_sort.c \
+				big_sort.c \
+				normalize.c \
 
 SOURCES = $(addprefix $(SOURCES_PATH)/, $(SOURCES_FILES))
 
@@ -37,9 +39,9 @@ COPY = cp -p
 all: build_libft $(NAME)
 
 $(NAME): $(OBJECTS) $(HEADER)
-	$(CC) -g $(OBJECTS) -o $(NAME) -L $(ARCHIVES) -I $(INCLUDE) $(LINK) 
+	$(CC) -g $(OBJECTS) -o $(NAME) -L $(ARCHIVES) -I $(INCLUDE) $(LINK)
 
-$(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER)
+$(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER) 
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
 	$(CC) $(CFLAGS) -g -I $(INCLUDE) -o $@ -c $<
 

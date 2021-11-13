@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:09:38 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/08 21:26:42 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 16:23:58 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_isdigit(char *argv[])
 		args = ft_split(argv[count_argv], ' ');
 		while (args[count_args])
 		{
-			if (!ft_isdigit(*args[count_args]))
+			if ((!ft_isdigit(*args[count_args])) && (*args[count_args] != '-'))
 				return (0);
 			count_args++;
 		}
@@ -93,7 +93,7 @@ int	handler_inputs(int argc, char *argv[], t_info *info)
 		return (print_error(ERR_FEW_PARAMETERS));
 	if (!check_isdigit(argv))
 		return (print_error(ERR_NOT_IS_DIGIT));
-	if (!fill_stack(argv, &info->stack_a, info))
+	if (!fill_stack(argv, &info->temp, info))
 		return (print_error(ERROR));
 	return (1);
 }

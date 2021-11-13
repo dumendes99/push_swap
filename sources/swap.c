@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 22:11:26 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/07 18:34:41 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:48:19 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	swap(t_stack **stack, int print)
 {
-	t_stack *first; 
-	t_stack *second;
-	
-	first = *stack;
-	second = (*stack)->next;
-	if (!(*stack)->next)
+	t_stack *swap;
+	t_stack *third;
+
+	if (!*stack || !(*stack)->next)
 		return ;
-	first->next = first->next->next;
-	*stack = second;
-	second->next = first;
+	third = (*stack)->next->next;
+	swap = *stack;
+	*stack = (*stack)->next;
+	(*stack)->next = swap;
+	swap->next = third;
 	if (print == sa)
 		ft_putstr_fd("sa\n", 1);
 	if (print == sb)

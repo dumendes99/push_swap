@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 16:36:54 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/07 18:51:16 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 19:17:18 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 void	del_last(t_stack **stack)
 {
 	t_stack	*temp;
-	t_stack *last_node;
+	t_stack	*last_node;
 
 	temp = *stack;
 	while (temp->next->next != NULL)
 		temp = temp->next;
 	last_node = temp->next;
-	temp->next = NULL;
+	if (temp->next)
+		temp->next = NULL;
 	free(last_node);
 }
 

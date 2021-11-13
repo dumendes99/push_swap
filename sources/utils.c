@@ -6,13 +6,13 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:32:59 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/07 18:34:55 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:17:41 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_stack	*new_node(long long int num)
+t_stack	*new_node(long int num)
 {
 	t_stack	*node;
 
@@ -51,7 +51,7 @@ void	freelist(t_stack *stack)
 
 	if (!stack)
 		return ;
-	while (stack)
+	while (stack != NULL)
 	{
 		temp = stack->next;
 		free(stack);

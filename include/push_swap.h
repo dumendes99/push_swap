@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/08 21:47:17 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:27:08 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_info
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_stack	*first_element;
+	t_stack *temp;
 	int		size_a;
 	int		size_b;
 }	t_info;
@@ -99,7 +99,7 @@ int		handler_inputs(int argc, char *argv[], t_info *info);
  * @param num value 
  * @return t_stack* 
  */
-t_stack	*new_node(long long int num);
+t_stack	*new_node(long int num);
 
 /**
  * @brief checks if the number passed as parameter already exists 
@@ -209,6 +209,13 @@ t_stack	*ps_lstlast(t_stack *lst);
 void	short_sort(t_info *info);
 
 /**
+ * @brief function to sort random numbers above 5 elements
+ * 
+ * @param info 
+ */
+void	big_sort(t_info *info);
+
+/**
  * @brief send a samallest number to stack b 
  * 
  * @param info 
@@ -216,7 +223,22 @@ void	short_sort(t_info *info);
  */
 void	send_smallest(t_info *info);
 
+/**
+ * @brief algorithm for to organize untill 5 random numbers in order smallest to bigger
+ * 
+ * @param info struct with the 2 stacks
+ */
 void	five_elements(t_info *info);
-int		rotate_or_reverse(t_info *info, int position);
+
+/**
+ * @brief check what is the better moviment between rotate or reverse rotate
+ * 
+ * @param info struct with stacks and info about them. 
+ * @param position where the number was find
+ * @return 1 to reverse rotate or 2 to rotate
+ */
+int		rotate_or_reverse(int size, int position);
+
+void	normalize(t_info *info);
 
 #endif

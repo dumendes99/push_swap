@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 20:29:13 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/03 18:07:01 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:35:32 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	rotate(t_stack **stack, int print)
 	if (print == ra)
 		ft_putstr_fd("ra\n", 1);
 	if (print == rb)
-	ft_putstr_fd("rb\n", 1);
+		ft_putstr_fd("rb\n", 1);
 }
 
 void	rotate_r(t_info *info)

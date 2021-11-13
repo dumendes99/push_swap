@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 18:17:34 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/07 20:55:20 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:47:19 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 int	find_algo(t_stack **stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = *stack;
-	if (temp->num > temp->next->num && 
-		temp->num < temp->next->next->num)
+	if (temp->num > temp->next->num
+		&& temp->num < temp->next->next->num)
 		return (1);
-	else if (temp->next->num < temp->num && 
-		temp->next->num > temp->next->next->num)
+	else if (temp->next->num < temp->num
+		&& temp->next->num > temp->next->next->num)
 		return (2);
-	else if (temp->next->next->num > temp->next->num && 
-		temp->next->next->num < temp->num)
+	else if (temp->next->next->num > temp->next->num
+		&& temp->next->next->num < temp->num)
 		return (3);
-	else if (temp->next->next->num < temp->next->num && 
-		temp->next->next->num > temp->num)
+	else if (temp->next->next->num < temp->next->num
+		&& temp->next->next->num > temp->num)
 		return (4);
-	else if (temp->num < temp->next->num && 
-		temp->num > temp->next->next->num)
+	else if (temp->num < temp->next->num
+		&& temp->num > temp->next->next->num)
 		return (5);
 	return (0);
 }
 
 void	three_elements(t_stack **stack)
 {
-	int algo;
+	int	algo;
 
 	algo = find_algo(stack);
 	if (algo == 1)
@@ -61,30 +61,26 @@ void	three_elements(t_stack **stack)
 void	two_elements(t_stack *stack)
 {
 	if (stack->num > stack->next->num)
-		return ;
-	else
-		swap(&stack, sb);
+		swap(&stack, sa);
 }
 
 void	short_sort(t_info *info)
 {
+	if (info->size_a == 2)
+		two_elements(info->stack_a);
 	if (info->size_a <= 3)
-	{
 		three_elements(&info->stack_a);
-		return ;
-	}
 	if (info->size_a <= 5)
-	{
 		five_elements(info);
-		return ;
-	}
+
+
 }
 
-int		rotate_or_reverse(t_info *info, int position)
+int	rotate_or_reverse(int size, int position)
 {
-	int	half; 
+	int	half;
 
-	half = info->size_a / 2;
+	half = size / 2;
 	if (half <= position)
 		return (1);
 	else if (half > position)
@@ -92,9 +88,9 @@ int		rotate_or_reverse(t_info *info, int position)
 	return (0);
 }
 
-void 	send_smallest(t_info *info)
+void	send_smallest(t_info *info)
 {
-	t_stack *aux;
+	t_stack	*aux;
 	int		smallest;
 	int		count;
 	int		position;
@@ -104,7 +100,7 @@ void 	send_smallest(t_info *info)
 	position = 0;
 	smallest = MAX_INT;
 	aux = info->stack_a;
-	while(aux != NULL)
+	while (aux != NULL)
 	{
 		if (smallest > aux->num)
 		{
@@ -114,7 +110,7 @@ void 	send_smallest(t_info *info)
 		aux = aux->next;
 		count++;
 	}
-	decision = rotate_or_reverse(info, position);
+	decision = rotate_or_reverse(info->size_b, position);
 	while (info->stack_a->num != smallest)
 	{
 		if (decision == 1)
