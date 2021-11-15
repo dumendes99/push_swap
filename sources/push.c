@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 17:14:05 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/12 22:38:11 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/15 18:13:05 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	push_b(t_info *info)
 {
 	t_stack	*aux;
 
+	if (!info->stack_a)
+		return ;
 	aux = info->stack_a;
 	ps_lstadd_front(&info->stack_b, new_node(aux->num));
 	del_first_node(&info->stack_a);
@@ -43,6 +45,8 @@ void	push_a(t_info *info)
 {
 	t_stack	*aux;
 
+	if (!info->stack_b)
+		return ;
 	aux = info->stack_b;
 	ps_lstadd_front(&info->stack_a, new_node(aux->num));
 	del_first_node(&info->stack_b);

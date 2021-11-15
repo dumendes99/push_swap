@@ -23,9 +23,10 @@ SOURCES_FILES = main.c \
 				push.c \
 				rotate.c \
 				reverse_rotate.c \
-				short_sort.c \
+				small_sort.c \
 				big_sort.c \
 				normalize.c \
+				small_sort_utils.c \
 
 SOURCES = $(addprefix $(SOURCES_PATH)/, $(SOURCES_FILES))
 
@@ -43,16 +44,16 @@ $(NAME): $(OBJECTS) $(HEADER)
 
 $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER) 
 	$(SAFE_MAKEDIR) $(OBJECTS_PATH)
-	$(CC) $(CFLAGS) -g -I $(INCLUDE) -o $@ -c $<
+	$(CC) $(CFLAGS) -g -I $(INCLUDE) -o $@ -c $< 
 
 build_libft:
 	$(SAFE_MAKEDIR) $(ARCHIVES)
 	$(MAKE_EXTERNAL) $(LIBFT_PATH)
 	$(COPY) $(LIBFT_PATH)/$(LIBFT) $(ARCHIVES)
 
-re: fclean all 
+re: fclean all
 
-clean: 
+clean:
 	$(REMOVE) $(OBJECTS_PATH)
 	$(MAKE_EXTERNAL) $(LIBFT_PATH) clean
 

@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/13 18:27:08 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/14 17:47:27 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ typedef struct s_info
 	t_stack *temp;
 	int		size_a;
 	int		size_b;
+	int 	group_size;
+	int		groups;
+	int		rest;
 }	t_info;
 
 void	print_stack(t_stack **stack);
@@ -239,6 +242,27 @@ void	five_elements(t_info *info);
  */
 int		rotate_or_reverse(int size, int position);
 
+/**
+ * @brief converts the values ​​to the given input range
+ * 
+ * @param info 
+ */
 void	normalize(t_info *info);
+
+/**
+ * @brief verify witch one is the better approach to small sorts
+ * 
+ * @param stack 
+ * @return int 
+ */
+int	find_algo(t_stack **stack);
+
+/**
+ * @brief send smallest element to stack_b 
+ * 
+ * @param info 
+ */
+void	send_smallest(t_info *info);
+
 
 #endif

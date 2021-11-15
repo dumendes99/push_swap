@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 19:15:19 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/13 20:48:10 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/15 18:20:08 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	print_stack(t_stack **stack)
 	temp = *stack;
 	while (temp)
 	{
-		printf("%d\n", temp->num);
+		printf("%d ", temp->num);
 		temp = temp->next;
 	}
+	printf("\n");
 }
 
 void	init_struct(t_info *info)
@@ -38,8 +39,10 @@ int	main(int argc, char *argv[])
 		return (1);
 	normalize(&info);
 	freelist(info.temp);
-	short_sort(&info);
-	big_sort(&info);
+	if (info.size_a <= 5)
+		short_sort(&info);
+	else
+		big_sort(&info);
 	freelist(info.stack_a);
 	return (0);
 }
