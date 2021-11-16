@@ -6,28 +6,11 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:13:10 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/15 18:21:50 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/15 22:46:56 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-
-// I'WILL USE THIS OF DIFERENT FORM IN SOME POINT
-// 
-// int find_smallest(int *position, int *smallest, t_info *info)
-// {
-// 	t_stack *temp;
-// 	temp = info->stack_a;
-// 	while (temp->next != NULL)
-// 	{
-// 		if (*smallest > temp->num)
-// 			*smallest = temp->num;
-// 		temp = temp->next;
-// 		*position = *position + 1;
-// 	}
-// 	return (0);
-// }
 
 int	find_biggest(t_stack **stack, int *biggest)
 {
@@ -53,18 +36,13 @@ int	find_biggest(t_stack **stack, int *biggest)
 
 void to_a(t_info *info, int num, int decision)
 {
-	t_stack *temp;
-
-	temp = info->stack_b;
 	while (info->stack_b->num != num)
 	{
 		if (decision == 1)
 			reverse_rotate(&info->stack_b, rrb);
 		if (decision == 2)
 			rotate(&info->stack_b, rb);
-		temp = temp->next;
 	}
-	temp = NULL;
 	push_a(info);
 }
 
@@ -74,7 +52,7 @@ void organize_b(t_info *info)
 	int		position;
 	int		decision;
 
-	while (info->size_b - 1)
+	while (info->size_b)
 	{
 		biggest = 0;
 		position = find_biggest(&info->stack_b, &biggest);
@@ -105,9 +83,6 @@ int	first_match(t_info *info, int small_ref, int bigger_ref, int *number)
 
 void to_b(t_info *info, int num, int decision)
 {
-	t_stack *temp;
-
-	temp = info->stack_a;
 	while (info->stack_a->num != num)
 	{
 		if (decision == 1)
@@ -131,38 +106,16 @@ void	big_sort(t_info *info)
 	info->groups = (info->size_a / info->group_size);
 	info->rest = info->size_a - (info->groups * info->group_size);
 	i = info->groups - 1;
-	while (info->stack_a)
+	while (info->groups)
 	{
 		if (info->size_b == info->group_size)
 		{
 			i--;
 			info->groups--;
-			break ;			
+			organize_b(info);
 		}
 		position = first_match(info, info->group_size * i, (info->group_size * info->groups), &number);
 		decision = rotate_or_reverse(info->size_a, position);
 		to_b(info, number, decision);
 	}
-	organize_b(info);
 }
-
-// int		sort_till_100(t_info *info)
-// { 
-// 	int	range;
-// 	int	position;
-// 	int decision;
-// 	int num;
-
-// 	num = MAX_INT;
-// 	range = info->size_a / 4;
-// 	range = range * 3;
-// 	while (info->size_b < 20)
-// 	{
-// 		position = first_match(info, range, &num);
-// 		decision = rotate_or_reverse(info->size_a, position);
-// 		to_b(info, num, decision);
-// 	}
-// 	organize_b(info);
-// 	return (0);
-// }
-

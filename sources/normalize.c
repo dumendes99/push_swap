@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 12:45:26 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/13 20:00:26 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/15 22:08:17 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	normalize(t_info *info)
 	helper = info->temp;
 	while (helper != NULL)
 	{
-		new_value = 1;
+		new_value = 0;
 		aux = info->temp;
 		while (aux != NULL)
 		{

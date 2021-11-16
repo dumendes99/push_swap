@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 17:14:05 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/15 18:13:05 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:50:07 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ void	del_first_node(t_stack **stack)
 
 void	push_b(t_info *info)
 {
-	t_stack	*aux;
 
-	if (!info->stack_a)
-		return ;
-	aux = info->stack_a;
-	ps_lstadd_front(&info->stack_b, new_node(aux->num));
-	del_first_node(&info->stack_a);
+	t_stack *first_a;
+	t_stack	*first_b;
+
+	first_a = info->stack_a;
+	info->stack_a = info->stack_a->next;
+	first_b = info->stack_b;
+	info->stack_b = first_a;
+	first_a->next = first_b;
 	info->size_a--;
 	info->size_b++;
 	ft_putstr_fd("pb\n", 1);
@@ -43,13 +45,14 @@ void	push_b(t_info *info)
 
 void	push_a(t_info *info)
 {
-	t_stack	*aux;
+	t_stack	*first_b;
+	t_stack	*first_a;
 
-	if (!info->stack_b)
-		return ;
-	aux = info->stack_b;
-	ps_lstadd_front(&info->stack_a, new_node(aux->num));
-	del_first_node(&info->stack_b);
+	first_b = info->stack_b;
+	info->stack_b = info->stack_b->next;
+	first_a = info->stack_a;
+	info->stack_a = first_b;
+	first_b->next = first_a;
 	info->size_a++;
 	info->size_b--;
 	ft_putstr_fd("pa\n", 1);
