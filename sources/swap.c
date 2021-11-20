@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 22:11:26 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/13 20:48:19 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/18 20:37:36 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	swap(t_stack **stack, int print)
 {
-	t_stack *swap;
-	t_stack *third;
+	t_stack	*swap;
+	t_stack	*third;
 
 	if (!*stack || !(*stack)->next)
 		return ;

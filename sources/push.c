@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 17:14:05 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/15 21:50:07 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/18 20:24:30 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	del_first_node(t_stack **stack)
 
 void	push_b(t_info *info)
 {
-
-	t_stack *first_a;
+	t_stack	*first_a;
 	t_stack	*first_b;
 
 	first_a = info->stack_a;

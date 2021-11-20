@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   order_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/16 16:45:49 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/18 20:23:57 by elima-me         ###   ########.fr       */
+/*   Created: 2021/11/20 15:11:53 by elima-me          #+#    #+#             */
+/*   Updated: 2021/11/20 15:19:10 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <push_swap.h>
 
-long int	ft_atoi(const char *nptr)
+int	order_check(t_stack **stack)
 {
-	long int	res;
-	int			sign;
+	t_stack *temp;
 
-	res = 0;
-	sign = 1;
-	if (*nptr == '-' || *nptr == '+')
+	temp = *stack;
+	while (temp->next != NULL)
 	{
-		if (*nptr == '-')
-			sign = -1;
-		nptr++;
+		if (temp->num > temp->next->num)
+			return (0);
+		temp = temp->next;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		res = (res * 10) + (*nptr - '0');
-		nptr++;
-	}
-	res = res * sign;
-	return (res);
+	return (1);
 }

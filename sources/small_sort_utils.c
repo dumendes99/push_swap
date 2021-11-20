@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:25:01 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/13 23:40:03 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/18 21:13:34 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,5 @@ void	send_smallest(t_info *info)
 		count++;
 	}
 	decision = rotate_or_reverse(info->size_b, position);
-	while (info->stack_a->num != smallest)
-	{
-		if (decision == 1)
-			reverse_rotate(&info->stack_a, rra);
-		if (decision == 2)
-			rotate(&info->stack_a, ra);
-	}
-	push_b(info);
+	to_b(info, smallest, decision);
 }

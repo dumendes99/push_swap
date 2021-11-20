@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/14 17:47:27 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/20 15:32:04 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "libft.h"
 # define SIZE_ERROR 4
 # define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 enum e_prints {
 	sa,
@@ -30,10 +31,7 @@ enum e_prints {
 };
 
 enum e_errors {
-	ERR_FEW_PARAMETERS,
-	ERR_INVALID_INPUT,
 	ERROR,
-	ERR_NOT_IS_DIGIT,
 };
 
 typedef struct s_stack
@@ -46,10 +44,10 @@ typedef struct s_info
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_stack *temp;
+	t_stack	*temp;
 	int		size_a;
 	int		size_b;
-	int 	group_size;
+	int		group_size;
 	int		groups;
 	int		rest;
 }	t_info;
@@ -111,7 +109,7 @@ t_stack	*new_node(long int num);
  * @param num the num to be added
  * @return int 0 to errorr, 1 to ok 
  */
-int		check_double(t_stack **stack, long long int num);
+int		check_double(t_stack **stack, long int num);
 
 /**
  * @brief added a struct as last element
@@ -219,15 +217,8 @@ void	short_sort(t_info *info);
 void	big_sort(t_info *info);
 
 /**
- * @brief send a samallest number to stack b 
- * 
- * @param info 
- * @return void* 
- */
-void	send_smallest(t_info *info);
-
-/**
- * @brief algorithm for to organize untill 5 random numbers in order smallest to bigger
+ * @brief algorithm for to organize untill 5 random numbers 
+ * in order smallest to bigger
  * 
  * @param info struct with the 2 stacks
  */
@@ -255,7 +246,7 @@ void	normalize(t_info *info);
  * @param stack 
  * @return int 
  */
-int	find_algo(t_stack **stack);
+int		find_algo(t_stack **stack);
 
 /**
  * @brief send smallest element to stack_b 
@@ -264,5 +255,56 @@ int	find_algo(t_stack **stack);
  */
 void	send_smallest(t_info *info);
 
+/**
+ * @brief in accord with decision, does necessary moviments 
+ * replaces the correct number at the top of stack 
+ * 
+ * @param info 
+ * @param num 
+ * @param decision 
+ */
+void	to_b(t_info *info, int num, int decision);
+
+/**
+ * @brief find the biggest number in stack
+ * 
+ * @param stack 
+ * @param biggest 
+ * @return int position where was finded
+ */
+int		find_biggest(t_stack **stack, int *biggest);
+
+/**
+ * @brief send to stack b the number gived as parameter
+ * 
+ * @param info struc with both stacks 
+ * @param num number that want send 
+ * @param decision decision between rotate ou reverse rotate
+ */
+void	to_b(t_info *info, int num, int decision);
+
+/**
+ * @brief after the division of groups, if has rest
+ * send to stack b before any other movement
+ * 
+ * @param info 
+ */
+void	send_rest_to_b(t_info *info);
+
+/**
+ * @brief mini algorithm that prepare the stack b
+ * to gibe back the corret values to stack a 
+ * 
+ * @param info 
+ */
+void	organize_b(t_info *info);
+
+/**
+ * @brief check if the stack are already ordened
+ * 
+ * @param stack 
+ * @return int 
+ */
+int	order_check(t_stack **stack);
 
 #endif

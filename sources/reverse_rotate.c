@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 16:36:54 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/15 20:54:02 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/18 20:37:59 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	del_last(t_stack **stack)
 
 void	reverse_rotate(t_stack **stack, int print)
 {
-	t_stack *last;
+	t_stack	*last;
 	t_stack	*first;
 	t_stack	*pen;
 

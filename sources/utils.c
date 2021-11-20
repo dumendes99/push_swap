@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:32:59 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/15 19:36:30 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/20 15:31:45 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ t_stack	*new_node(long int num)
 	return (node);
 }
 
-int	check_double(t_stack **stack, long long int num)
+int	check_double(t_stack **stack, long int num)
 {
 	t_stack	*temp;
 	int		times;
 
 	temp = *stack;
 	times = 0;
-	if (num > MAX_INT)
+	if (num > MAX_INT || num < MIN_INT)
 		return (0);
 	while (temp)
 	{

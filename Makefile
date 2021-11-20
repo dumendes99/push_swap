@@ -27,6 +27,8 @@ SOURCES_FILES = main.c \
 				big_sort.c \
 				normalize.c \
 				small_sort_utils.c \
+				big_sort_utils.c \
+				order_check.c \
 
 SOURCES = $(addprefix $(SOURCES_PATH)/, $(SOURCES_FILES))
 
@@ -60,4 +62,6 @@ clean:
 fclean: clean
 	$(REMOVE) $(NAME)
 	$(MAKE_EXTERNAL) $(LIBFT_PATH) fclean
-	$(REMOVE ARCHIVES)
+	$(REMOVE) $(ARCHIVES)
+
+.PHONY: all build_libft re clean fclean 

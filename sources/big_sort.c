@@ -6,35 +6,13 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:13:10 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/15 22:46:56 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/18 21:16:40 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	find_biggest(t_stack **stack, int *biggest)
-{
-	t_stack *temp;
-	int		position;
-	int		moves; 
-
-	temp = *stack;
-	position = 0;
-	moves = 0;
-	while (temp != NULL)
-	{
-		if (*biggest < temp->num)
-		{
-			*biggest = temp->num;
-			position = moves;
-		}
-		temp = temp->next;
-		moves++;
-	}
-	return (position);
-}
-
-void to_a(t_info *info, int num, int decision)
+void	to_a(t_info *info, int num, int decision)
 {
 	while (info->stack_b->num != num)
 	{
@@ -46,7 +24,7 @@ void to_a(t_info *info, int num, int decision)
 	push_a(info);
 }
 
-void organize_b(t_info *info)
+void	organize_b(t_info *info)
 {
 	int		biggest;
 	int		position;
@@ -63,7 +41,7 @@ void organize_b(t_info *info)
 
 int	first_match(t_info *info, int small_ref, int bigger_ref, int *number)
 {
-	t_stack *temp;
+	t_stack	*temp;
 	int		position;
 
 	temp = info->stack_a;
@@ -81,41 +59,42 @@ int	first_match(t_info *info, int small_ref, int bigger_ref, int *number)
 	return (-1);
 }
 
-void to_b(t_info *info, int num, int decision)
-{
-	while (info->stack_a->num != num)
-	{
-		if (decision == 1)
-			reverse_rotate(&info->stack_a, rra);
-		if (decision == 2)
-			rotate(&info->stack_a, ra);
-	}
-	push_b(info);
-}
-
-void	big_sort(t_info *info)
+void	organize_a(t_info *info)
 {
 	int	i;
-	int number;
-	int position;
-	int decision;
+	int	number;
+	int	decision;
+	int	position;
 
-	number = MAX_INT;
-	decision = 0;
-	info->group_size = 20;
-	info->groups = (info->size_a / info->group_size);
-	info->rest = info->size_a - (info->groups * info->group_size);
 	i = info->groups - 1;
 	while (info->groups)
 	{
+		position = first_match(info, (info->group_size * i), (info->group_size
+					* info->groups) - 1, &number);
+		decision = rotate_or_reverse(info->size_a, position);
+		to_b(info, number, decision);
 		if (info->size_b == info->group_size)
 		{
 			i--;
 			info->groups--;
 			organize_b(info);
 		}
-		position = first_match(info, info->group_size * i, (info->group_size * info->groups), &number);
-		decision = rotate_or_reverse(info->size_a, position);
-		to_b(info, number, decision);
 	}
+}
+
+void	big_sort(t_info *info)
+{
+	if (info->size_a <= 100)
+		info->group_size = 20;
+	else if (info->size_a > 100
+		&& info->size_a <= 250)
+		info->group_size = 25;
+	else if (info->size_a > 250
+		&& info->size_a <= 500)
+		info->group_size = 50;
+	info->groups = (info->size_a / info->group_size);
+	info->rest = info->size_a - (info->groups * info->group_size);
+	if (info->rest)
+		send_rest_to_b(info);
+	organize_a(info);
 }

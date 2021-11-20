@@ -6,42 +6,45 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:09:38 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/13 16:23:58 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/20 15:29:00 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-// int	check_executable(char *argv[])
-// {
-// 	int	count;
-
-// 	count = 0;
-// 	while (argv[0][count])
-// 	{
-// 		if (argv[0][count] == ' ')
-// 			return 0;
-// 		count++;
-// 	}
-// 	return 1;
-// }
+int	checker_digit(char **args, int count_args, int count)
+{
+	while (args[count_args])
+	{
+		while (args[count_args][count])
+		{
+			if ((!ft_isdigit(args[count_args][count])
+				&& args[count_args][count] != '-')
+				|| (count > 0 && args[count_args][count] == '-'))
+				return (0);
+			count++;
+		}
+		count_args++;
+	}
+	return (1);
+}
 
 int	check_isdigit(char *argv[])
 {
 	int		count_argv;
-	int		count_args;
+	int		i[2];
 	char	**args;
 
 	count_argv = 1;
 	while (argv[count_argv])
 	{
-		count_args = 0;
+		i[0] = 0;
+		i[1] = 0;
 		args = ft_split(argv[count_argv], ' ');
-		while (args[count_args])
+		if (!checker_digit(args, i[0], i[1]))
 		{
-			if ((!ft_isdigit(*args[count_args])) && (*args[count_args] != '-'))
-				return (0);
-			count_args++;
+			freeall(args);
+			return (0);
 		}
 		freeall(args);
 		count_argv++;
@@ -87,12 +90,10 @@ int	fill_stack(char **argv, t_stack **stack, t_info *info)
 
 int	handler_inputs(int argc, char *argv[], t_info *info)
 {
-	// if (!check_executable(argv))
-		// return (print_error(ERR_INVALID_INPUT));
 	if (!minimal_args(argc))
-		return (print_error(ERR_FEW_PARAMETERS));
+		return (0);
 	if (!check_isdigit(argv))
-		return (print_error(ERR_NOT_IS_DIGIT));
+		return (print_error(ERROR));
 	if (!fill_stack(argv, &info->temp, info))
 		return (print_error(ERROR));
 	return (1);
