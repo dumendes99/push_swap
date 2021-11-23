@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 15:11:53 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/20 15:19:10 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/22 22:11:31 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	order_check(t_stack **stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = *stack;
 	while (temp->next != NULL)

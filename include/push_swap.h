@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:17:46 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/20 15:32:04 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/22 22:11:21 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,6 +305,6 @@ void	organize_b(t_info *info);
  * @param stack 
  * @return int 
  */
-int	order_check(t_stack **stack);
+int		order_check(t_stack **stack);
 
 #endif
