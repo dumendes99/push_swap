@@ -6,7 +6,7 @@
 /*   By: elima-me <elima-me@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 19:15:19 by elima-me          #+#    #+#             */
-/*   Updated: 2021/11/20 15:15:16 by elima-me         ###   ########.fr       */
+/*   Updated: 2021/11/25 20:28:32 by elima-me         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	main(int argc, char *argv[])
 	normalize(&info);
 	freelist(info.temp);
 	if (order_check(&info.stack_a))
+	{
+		freelist(info.stack_a);
 		return (0);
+	}
 	if (info.size_a <= 5)
 		short_sort(&info);
 	else
